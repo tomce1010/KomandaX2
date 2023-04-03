@@ -8,11 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import utils.FxUtils;
 
 import javax.persistence.EntityManagerFactory;
 import java.io.IOException;
@@ -69,7 +67,11 @@ public class RegisterPage implements Initializable {
     public void Register() throws IOException {
 
         if (loginField.getText().isEmpty() || passwordField.getText().isEmpty() || nameField.getText().isEmpty() || lastnameField.getText().isEmpty() || phoneField.getText().isEmpty()){
-            System.out.println("Empty");
+            FxUtils.generateAlert(Alert.AlertType.INFORMATION, "One or more fields are empty", "User Registration Data");
+        }
+        if(phoneField.getText().length() >= 15)
+        {
+            FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Phone number cannot exceed 15 digits", phoneField.getText());
         }
         else {
             if (!managerCheck.isSelected()) {
