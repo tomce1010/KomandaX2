@@ -42,6 +42,10 @@ public class RegisterPage implements Initializable {
     public TextField distanceField;
     @FXML
     public CheckBox licenceCheck;
+    @FXML
+    public TextField DriversLicense;
+    @FXML
+    public TextField MedicalCard;
     private ManagerHib managerHib;
     private TruckerHib truckerHib;
     private EntityManagerFactory entityManagerFactory;
@@ -76,7 +80,7 @@ public class RegisterPage implements Initializable {
         else {
             if (!managerCheck.isSelected()) {
                 Trucker trucker = null;
-                trucker = new Trucker(passwordField.getText(), nameField.getText(), lastnameField.getText(), birthField.getValue(), phoneField.getText(), loginField.getText(), medicalCheck.isSelected(), licenceCheck.isSelected(), Integer.valueOf(distanceField.getText()));
+                trucker = new Trucker(DriversLicense.getText(), MedicalCard.getText(), passwordField.getText(), nameField.getText(), lastnameField.getText(), birthField.getValue(), phoneField.getText(), loginField.getText(), medicalCheck.isSelected(), licenceCheck.isSelected(), Integer.valueOf(distanceField.getText()));
                 truckerHib.createTrucker(trucker);
             } else {
                 Manager manager = null;

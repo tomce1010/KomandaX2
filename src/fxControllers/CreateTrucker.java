@@ -27,6 +27,8 @@ public class CreateTrucker {
     public CheckBox medicalField;
     public CheckBox driverField;
     public TextField distanceField;
+    public TextField MedicalCard;
+    public TextField DriversLicense;
     private TruckerHib truckerHib;
     private EntityManagerFactory entityManagerFactory;
 
@@ -37,7 +39,7 @@ public class CreateTrucker {
 
     public void createTrucker() throws IOException {
         Trucker trucker = null;
-        trucker = new Trucker(passwordField.getText(), nameField.getText(), lastnameField.getText(), birthField.getValue(), phoneField.getText(), loginField.getText(), medicalField.isSelected(), driverField.isSelected(), Integer.parseInt(distanceField.getText()));
+        trucker = new Trucker(MedicalCard.getText(), DriversLicense.getText() ,passwordField.getText(), nameField.getText(), lastnameField.getText(), birthField.getValue(), phoneField.getText(), loginField.getText(), medicalField.isSelected(), driverField.isSelected(), Integer.parseInt(distanceField.getText()));
         truckerHib.createTrucker(trucker);
     }
 }

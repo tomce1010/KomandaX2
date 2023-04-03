@@ -20,5 +20,7 @@
       <CheckBox fx:id="managerCheck" layoutX="72.0" layoutY="382.0" mnemonicParsing="false" onAction="#disableFields" text="Manager" />
       <TextField fx:id="distanceField" layoutX="275.0" layoutY="165.0" promptText="Full driven distance" />
       <CheckBox fx:id="licenceCheck" layoutX="274.0" layoutY="132.0" mnemonicParsing="false" text="Have valid driver licence" />
+      <TextField fx:id="DriversLicense" layoutX="275.0" layoutY="202.0" promptText="Drivers license number" />
+      <TextField fx:id="MedicalCard" layoutX="274.0" layoutY="237.0" promptText="Medical card number" />
    </children>
 </AnchorPane>
