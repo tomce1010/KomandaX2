@@ -63,6 +63,7 @@ public class LoginPage {
                 while (System.currentTimeMillis() < endTime) {
                     //funkcija
                     if (endTime<System.currentTimeMillis()) {
+
                         FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
                     }
                 }
