@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="369.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControllers.CreateDestination">
+   <children>
+      <Button fx:id="createButton" layoutX="118.0" layoutY="308.0" mnemonicParsing="false" onAction="#createDestination" text="Create" />
+      <TextField fx:id="startField" layoutX="70.0" layoutY="35.0" promptText="Start" />
+      <TextField fx:id="destinationField" layoutX="71.0" layoutY="73.0" promptText="Destination" />
+      <TextField fx:id="distanceField" layoutX="70.0" layoutY="115.0" promptText="Distance" />
+      <DatePicker fx:id="arrivalDate" layoutX="59.0" layoutY="205.0" promptText="Arrival date" />
+      <DatePicker fx:id="departureDate" layoutX="59.0" layoutY="160.0" promptText="Departure date" />
+      <ChoiceBox fx:id="statusField" layoutX="69.0" layoutY="251.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
