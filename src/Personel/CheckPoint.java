@@ -18,17 +18,20 @@ public class CheckPoint {
     private int id;
     private String country;
     private String address;
+    private String GPS;
     @ManyToOne
     private Destination destination;
 
-    public CheckPoint(String country, String address) {
+    public CheckPoint(String country, String address, String GPS) {
         this.country = country;
         this.address = address;
+        this.GPS = GPS;
     }
 
-    public CheckPoint(String country, String address, Destination destination) {
+    public CheckPoint(String country, String address, String GPS, Destination destination) {
         this.country = country;
         this.address = address;
+        this.GPS = GPS;
         this.destination = destination;
     }
 
@@ -36,6 +39,7 @@ public class CheckPoint {
     public String toString() {
         return  "ID = " + id +
                 "\nCountry = '" + country + '\'' +
-                "\nAddress = '" + address + '\'';
+                "\nAddress = '" + address + '\'' +
+                "\nGPS = '" + GPS + '\'';
     }
 }

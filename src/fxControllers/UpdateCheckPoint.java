@@ -15,6 +15,7 @@ public class UpdateCheckPoint {
     public Button updateButton;
     public TextField countryField;
     public TextField addressField;
+    public TextField GPSField;
     private CheckPointHib checkPointHib;
     private CheckPoint selectedCheckPoint;
     private EntityManagerFactory entityManagerFactory;
@@ -30,12 +31,14 @@ public class UpdateCheckPoint {
         CheckPoint checkPoint = (CheckPoint) checkPointHib.getCheckPointById(selectedCheckPoint.getId());
         countryField.setText(checkPoint.getCountry());
         addressField.setText(checkPoint.getAddress());
+        GPSField.setText(checkPoint.getGPS());
     }
 
     public void updateCheckPoint() throws IOException {
         CheckPoint checkPoint = (CheckPoint) checkPointHib.getCheckPointById(selectedCheckPoint.getId());
         checkPoint.setCountry(countryField.getText());
         checkPoint.setAddress(addressField.getText());
+        checkPoint.setGPS(GPSField.getText());
         checkPointHib.updateCheckPoint(checkPoint);
     }
 }
