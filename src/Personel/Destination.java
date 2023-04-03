@@ -63,6 +63,7 @@ public class Destination{
                 "\nDestination = '" + destination + '\'' +
                 "\nDeparture date = '" + departureDate + '\'' +
                 "\nArrival date = '" + arrivalDate + '\'' +
-                "\nStatus: " + status;
+                "\nStatus: " + status + '\'' +
+                "\nTruck Plates: " + truckdetails;
     }
 }
