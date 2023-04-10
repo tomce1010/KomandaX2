@@ -36,6 +36,9 @@ public class TruckerHib {
     }
 
     public void updateTrucker(Trucker trucker) {
+        if (entityManager == null) {
+            throw new IllegalStateException("entityManager is null - please initialize or inject it before calling deleteDestination()");
+        }
         entityManager = emf.createEntityManager();
         try {
             entityManager.getTransaction().begin();
