@@ -47,6 +47,7 @@ public class MainPage implements Initializable {
     public AnchorPane truckerPane;
     public AnchorPane checkPointPane;
     public AnchorPane destinationPane;
+    public AnchorPane dataPane;
     public AnchorPane truckPane;
     public BarChart<String, Integer> barChart;
     public DatePicker departureFilter;
@@ -106,6 +107,7 @@ public class MainPage implements Initializable {
             allTabs.getTabs().remove(managerTab);
             allTabs.getTabs().remove(truckerTab);
             destinationPane.setDisable(true);
+            dataPane.setDisable(true);
             checkPointPane.setDisable(true);
             truckPane.setDisable(true);
         } else if (user.getClass() == Manager.class && manager.isAdmin() == false) {

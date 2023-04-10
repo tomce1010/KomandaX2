@@ -15,9 +15,13 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <AnchorPane fx:id="dataPane" layoutX="38.0" layoutY="140.0" prefHeight="55.0" prefWidth="191.0">
+                     <children>
+                        <Button layoutX="34.0" layoutY="13.0" mnemonicParsing="false" onAction="#editYourData" prefHeight="30.0" prefWidth="111.0" text="Edit your data" />
+                     </children>
+                  </AnchorPane>
                   <Button layoutX="76.0" layoutY="387.0" mnemonicParsing="false" onAction="#signOut" prefHeight="25.0" prefWidth="105.0" text="Sign out" />
                   <Button layoutX="73.0" layoutY="101.0" mnemonicParsing="false" onAction="#viewYourData" prefHeight="30.0" prefWidth="111.0" text="View your data" />
-                  <Button layoutX="73.0" layoutY="154.0" mnemonicParsing="false" onAction="#editYourData" prefHeight="30.0" prefWidth="111.0" text="Edit your data" />
                   <ListView layoutX="311.0" layoutY="55.0" prefHeight="357.0" prefWidth="415.0" />
                </children></AnchorPane>
       </content>
