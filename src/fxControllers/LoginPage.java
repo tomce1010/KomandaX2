@@ -84,14 +84,18 @@ public class LoginPage {
         }
     }
 
-    public void Register() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/register-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) passwordField.getScene().getWindow();
-        stage.setTitle("Register");
-        stage.setScene(scene);
-        stage.show();
-        RegisterPage registerPage = fxmlLoader.getController();
-        registerPage.setData(entityManagerFactory);
+    public void Register() throws ExceptionInInitializerError {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/register-page.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) passwordField.getScene().getWindow();
+            stage.setTitle("Register");
+            stage.setScene(scene);
+            stage.show();
+            RegisterPage registerPage = fxmlLoader.getController();
+            registerPage.setData(entityManagerFactory);
+        } catch (IOException e) {
+            throw new ExceptionInInitializerError();
+        }
     }
 }
