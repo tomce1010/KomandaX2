@@ -151,18 +151,18 @@ public class MainPage implements Initializable {
     }
     //HOME
     public void signOut() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("You're about to logout!");
-        alert.setContentText("Do you really want to logout?");
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) truckPane.getScene().getWindow();
-            stage.setTitle("Login");
-            stage.setScene(scene);
-            stage.show();
-        }
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+         alert.setTitle("Logout");
+         alert.setHeaderText("Check if you saved all the data!");
+         alert.setContentText("Do you really want to logout?");
+         if (alert.showAndWait().get() == ButtonType.OK) {
+             FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
+             Scene scene = new Scene(fxmlLoader.load());
+             Stage stage = (Stage) truckPane.getScene().getWindow();
+             stage.setTitle("Login");
+             stage.setScene(scene);
+             stage.show();
+         }
     }
 
     public void viewYourData() {
