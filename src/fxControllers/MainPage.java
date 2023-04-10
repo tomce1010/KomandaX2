@@ -110,7 +110,6 @@ public class MainPage implements Initializable {
             allTabs.getTabs().remove(truckerTab);
             destinationPane.setDisable(true);
             dataPane.setDisable(true);
-            checkPointPane.setDisable(true);
             truckPane.setDisable(true);
         } else if (user.getClass() == Manager.class && manager.isAdmin() == false) {
             allTabs.getTabs().remove(destinationTab);
