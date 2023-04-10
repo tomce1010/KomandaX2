@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.hibernate.query.criteria.internal.expression.function.UpperFunction;
 import utils.FxUtils;
 
 import javax.persistence.EntityManagerFactory;
@@ -56,7 +55,7 @@ public class RegisterPage implements Initializable {
         this.managerHib = new ManagerHib(entityManagerFactory);
         this.truckerHib = new TruckerHib(entityManagerFactory);
     }
-    public void disableFields() {
+    public void disableFieldsUserType() {
         if(managerCheck.isSelected() == false){
             medicalCheck.setDisable(false);
             licenceCheck.setDisable(false);
@@ -73,7 +72,7 @@ public class RegisterPage implements Initializable {
             adminField.setDisable(false);
         }
     }
-    public void Register() throws IOException {
+    public void RegisterUser() throws IOException {
 
         if (loginField.getText().isEmpty() || passwordField.getText().isEmpty() || nameField.getText().isEmpty() || lastnameField.getText().isEmpty() || phoneField.getText().isEmpty()){
             FxUtils.generateAlert(Alert.AlertType.INFORMATION, "One or more fields are empty", "User Registration Data");
@@ -108,6 +107,6 @@ public class RegisterPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        disableFields();
+        disableFieldsUserType();
     }
 }
