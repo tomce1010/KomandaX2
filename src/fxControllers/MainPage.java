@@ -110,10 +110,10 @@ public class MainPage implements Initializable {
             allTabs.getTabs().remove(truckerTab);
             destinationPane.setDisable(true);
             dataPane.setDisable(true);
-            checkPointPane.setDisable(true);
             truckPane.setDisable(true);
         } else if (user.getClass() == Manager.class && manager.isAdmin() == false) {
             allTabs.getTabs().remove(destinationTab);
+            allTabs.getTabs().remove(managerTab);
             managerPane.setDisable(true);
         }
     }
@@ -332,17 +332,22 @@ public class MainPage implements Initializable {
     }
 
     public void updateTrucker() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(UpdateTrucker.class.getResource("../fxml/update-trucker-page.fxml"));
-        Parent parent = fxmlLoader.load();
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.setTitle("Trucker Shop");
-        stage.setScene(scene);
-        stage.show();
-        UpdateTrucker updateTrucker = fxmlLoader.getController();
-        updateTrucker.setData(entityManagerFactory, truckerList.getSelectionModel().getSelectedItem());
-        truckerList.getItems().clear();
-        fillList();
+        if (truckerList.getSelectionModel().isEmpty()){
+            FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Please select an item", "!!!");
+        }
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(UpdateTrucker.class.getResource("../fxml/update-trucker-page.fxml"));
+            Parent parent = fxmlLoader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setTitle("Trucker Shop");
+            stage.setScene(scene);
+            stage.show();
+            UpdateTrucker updateTrucker = fxmlLoader.getController();
+            updateTrucker.setData(entityManagerFactory, truckerList.getSelectionModel().getSelectedItem());
+            truckerList.getItems().clear();
+            fillList();
+        }
     }
 
     public void createTrucker() throws IOException {

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="544.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControllers.UpdateTrucker">
+<AnchorPane prefHeight="544.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControllers.UpdateTrucker">
    <children>
       <Button fx:id="createButton" layoutX="118.0" layoutY="474.0" mnemonicParsing="false" onAction="#updateTrucker" text="Update" />
       <TextField fx:id="passwordField" layoutX="69.0" layoutY="50.0" promptText="Password" />
@@ -18,5 +18,7 @@
       <CheckBox fx:id="medicalField" layoutX="71.0" layoutY="391.0" mnemonicParsing="false" text="Have valid medical card" />
       <CheckBox fx:id="driverField" layoutX="71.0" layoutY="432.0" mnemonicParsing="false" text="Have valid driver licence" />
       <TextField fx:id="distanceField" layoutX="70.0" layoutY="344.0" promptText="Full driven distance" />
+      <TextField fx:id="MedicalCard" layoutX="261.0" layoutY="387.0" promptText="Medical card number" />
+      <TextField fx:id="DriversLicense" layoutX="261.0" layoutY="428.0" promptText="Drivers license number" />
    </children>
 </AnchorPane>
