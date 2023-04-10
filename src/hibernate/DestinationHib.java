@@ -16,11 +16,17 @@ public class DestinationHib {
     public DestinationHib(EntityManagerFactory entityManagerFactory) {
         this.emf = entityManagerFactory;
     }
-    private EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    public DestinationHib(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
     public void createDestination(Destination destination) {
+        if (entityManager == null) {
+            throw new IllegalStateException("entityManager is null - please initialize or inject it before calling deleteDestination()");
+        }
         entityManager = emf.createEntityManager();
         try {
             entityManager.getTransaction().begin();
@@ -34,6 +40,9 @@ public class DestinationHib {
     }
 
     public void updateDestination(Destination destination) {
+        if (entityManager == null) {
+            throw new IllegalStateException("entityManager is null - please initialize or inject it before calling deleteDestination()");
+        }
         entityManager = emf.createEntityManager();
         try {
             entityManager.getTransaction().begin();
@@ -47,6 +56,9 @@ public class DestinationHib {
     }
 
     public void deleteDestination(Destination destination){
+        if (entityManager == null) {
+            throw new IllegalStateException("entityManager is null - please initialize or inject it before calling deleteDestination()");
+        }
         entityManager.getTransaction().begin();
         entityManager.remove(destination);
         entityManager.getTransaction().commit();
@@ -87,7 +99,7 @@ public class DestinationHib {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            TypedQuery<Destination> query = em.createQuery("SELECT u FROM Destination u WHERE status = :status AND arrivalDate >= :arrivalDate AND departureDate <= :departureDate", Destination.class);
+            TypedQuery<Destination> query = em.createQuery("SELECT u FROM Destination u WHERE status = :status AND arrivalDate <= :departureDate AND departureDate >= :arrivalDate", Destination.class);
             query.setParameter("status", status);
             query.setParameter("arrivalDate", arrivalDate);
             query.setParameter("departureDate", departureDate);
