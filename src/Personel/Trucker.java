@@ -19,14 +19,19 @@ import java.util.List;
 public class Trucker extends User {
     private boolean hasValidMedicalCard;
     private boolean hasValidDriversLicence;
+    private String DriversLicense;
+    private String MedicalCard;
     private int fullDrivenDistance;
     @OneToMany (mappedBy = "trucker", cascade = CascadeType.ALL)
     private List<Truck> trucks;
 
-    public Trucker(String password, String name, String lastname, LocalDate dateOfBirth, String phoneNum, String login, boolean hasValidMedicalCard, boolean hasValidDriversLicence, int fullDrivenDistance) {
+    public Trucker(String DriversLicense, String MedicalCard, String password, String name, String lastname, LocalDate dateOfBirth, String phoneNum, String login, boolean hasValidMedicalCard, boolean hasValidDriversLicence, int fullDrivenDistance) {
         super(password, name, lastname, dateOfBirth, phoneNum, login);
         this.hasValidMedicalCard = hasValidMedicalCard;
         this.hasValidDriversLicence = hasValidDriversLicence;
         this.fullDrivenDistance = fullDrivenDistance;
+        this.DriversLicense = DriversLicense;
+        this.MedicalCard = MedicalCard;
     }
+
 }

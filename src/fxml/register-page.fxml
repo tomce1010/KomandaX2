@@ -17,9 +17,11 @@
       <TextField fx:id="loginField" layoutX="71.0" layoutY="91.0" promptText="Login" />
       <CheckBox fx:id="adminField" layoutX="301.0" layoutY="287.0" mnemonicParsing="false" text="I am an admin" />
       <CheckBox fx:id="medicalCheck" layoutX="275.0" layoutY="95.0" mnemonicParsing="false" text="Have valid medical card" />
-      <CheckBox fx:id="managerCheck" layoutX="72.0" layoutY="382.0" mnemonicParsing="false" onAction="#disableFields" text="Manager" />
+      <CheckBox fx:id="managerCheck" layoutX="72.0" layoutY="382.0" mnemonicParsing="false" onAction="#disableFieldsForUser" text="Manager" />
       <TextField fx:id="distanceField" layoutX="275.0" layoutY="165.0" promptText="Full driven distance" />
       <CheckBox fx:id="licenceCheck" layoutX="274.0" layoutY="132.0" mnemonicParsing="false" text="Have valid driver licence" />
       <Button layoutX="295.0" layoutY="437.0" mnemonicParsing="false" onAction="#getBackToLogin" text="Get back to login" />
+      <TextField fx:id="DriversLicense" layoutX="275.0" layoutY="202.0" promptText="Drivers license number" />
+      <TextField fx:id="MedicalCard" layoutX="274.0" layoutY="237.0" promptText="Medical card number" />
    </children>
 </AnchorPane>
