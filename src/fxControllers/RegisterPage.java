@@ -61,11 +61,15 @@ public class RegisterPage implements Initializable {
             medicalCheck.setDisable(false);
             licenceCheck.setDisable(false);
             distanceField.setDisable(false);
+            DriversLicense.setDisable(false);
+            MedicalCard.setDisable(false);
             adminField.setDisable(true);
         } else {
             medicalCheck.setDisable(true);
             licenceCheck.setDisable(true);
             distanceField.setDisable(true);
+            DriversLicense.setDisable(true);
+            MedicalCard.setDisable(true);
             adminField.setDisable(false);
         }
     }
