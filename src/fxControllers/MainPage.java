@@ -113,7 +113,6 @@ public class MainPage implements Initializable {
         } else if (user.getClass() == Manager.class && manager.isAdmin() == false) {
             allTabs.getTabs().remove(destinationTab);
             managerPane.setDisable(true);
-            truckerPane.setDisable(true);
         }
     }
 
