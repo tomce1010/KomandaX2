@@ -11,48 +11,54 @@ class TestDisableFieldsForUser {
     @Test
     void testManagerNotSelected() {
         // Arrange
-        String managerSelected = "false";
-        CheckBox managerCheck = new CheckBox(managerSelected);
-        CheckBox medicalCheck = new CheckBox("true");
-        CheckBox licenceCheck = new CheckBox("true");
+        CheckBox managerCheck = new CheckBox();
+        managerCheck.setSelected(false);
+        CheckBox medicalCheck = new CheckBox();
+        medicalCheck.setSelected(true);
+        CheckBox licenceCheck = new CheckBox();
+        licenceCheck.setSelected(true);
         TextField distanceField = new TextField("10");
-        TextField DriversLicense = new TextField("12345");
-        TextField MedicalCard = new TextField("67890");
-        CheckBox adminField = new CheckBox("true");
+        TextField driversLicense = new TextField("12345");
+        TextField medicalCard = new TextField("67890");
+        CheckBox adminField = new CheckBox();
+        adminField.setSelected(true);
 
         // Act
-        RegisterPage.disableFieldsForUser(managerCheck, medicalCheck, licenceCheck, distanceField, DriversLicense, MedicalCard, adminField);
+        RegisterPage.disableFieldsForUser(managerCheck, medicalCheck, licenceCheck, distanceField, driversLicense, medicalCard, adminField);
 
         // Assert
         assertFalse(medicalCheck.isDisabled());
         assertFalse(licenceCheck.isDisabled());
         assertFalse(distanceField.isDisabled());
-        assertFalse(DriversLicense.isDisabled());
-        assertFalse(MedicalCard.isDisabled());
+        assertFalse(driversLicense.isDisabled());
+        assertFalse(medicalCard.isDisabled());
         assertTrue(adminField.isDisabled());
     }
 
     @Test
     void testManagerSelected() {
         // Arrange
-        String managerSelected = "true";
-        CheckBox managerCheck = new CheckBox(managerSelected);
-        CheckBox medicalCheck = new CheckBox("true");
-        CheckBox licenceCheck = new CheckBox("true");
+        CheckBox managerCheck = new CheckBox();
+        managerCheck.setSelected(true);
+        CheckBox medicalCheck = new CheckBox();
+        medicalCheck.setSelected(true);
+        CheckBox licenceCheck = new CheckBox();
+        licenceCheck.setSelected(true);
         TextField distanceField = new TextField("10");
-        TextField DriversLicense = new TextField("12345");
-        TextField MedicalCard = new TextField("67890");
-        CheckBox adminField = new CheckBox("true");
+        TextField driversLicense = new TextField("12345");
+        TextField medicalCard = new TextField("67890");
+        CheckBox adminField = new CheckBox();
+        adminField.setSelected(true);
 
         // Act
-        RegisterPage.disableFieldsForUser(managerCheck, medicalCheck, licenceCheck, distanceField, DriversLicense, MedicalCard, adminField);
+        RegisterPage.disableFieldsForUser(managerCheck, medicalCheck, licenceCheck, distanceField, driversLicense, medicalCard, adminField);
 
         // Assert
         assertTrue(medicalCheck.isDisabled());
         assertTrue(licenceCheck.isDisabled());
         assertTrue(distanceField.isDisabled());
-        assertTrue(DriversLicense.isDisabled());
-        assertTrue(MedicalCard.isDisabled());
+        assertTrue(driversLicense.isDisabled());
+        assertTrue(medicalCard.isDisabled());
         assertFalse(adminField.isDisabled());
     }
 }
