@@ -29,15 +29,22 @@ public class LoginPage {
     ManagerHib managerHib = new ManagerHib(entityManagerFactory);
     TruckerHib truckerHib = new TruckerHib(entityManagerFactory);
 
-    public void login() throws IOException {
+
+    public void login() throws IOException, InterruptedException {
         if (managerCheck.isSelected()) {
             Manager manager = managerHib.getManagerByLoginData(loginField.getText(), passwordField.getText());
             if (manager != null) {
+                long startTime = System.currentTimeMillis();
+                long endTime = startTime + 1;
+                while (System.currentTimeMillis() < endTime) {
+                    if (endTime<System.currentTimeMillis()) {
+                        FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
+                    }
+                }
                 FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/main-page.fxml"));
                 Parent parent = fxmlLoader.load();
                 MainPage mainPage = fxmlLoader.getController();
                 mainPage.setDataManager(entityManagerFactory, manager, manager);
-
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) passwordField.getScene().getWindow();
                 stage.setTitle("Main page");
@@ -49,6 +56,14 @@ public class LoginPage {
         } else {
             Trucker trucker = truckerHib.getTruckerByLoginData(loginField.getText(), passwordField.getText());
             if (trucker != null) {
+                long startTime = System.currentTimeMillis();
+                long endTime = startTime + 1;
+                while (System.currentTimeMillis() < endTime) {
+                    if (endTime<System.currentTimeMillis()) {
+
+                        FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
+                    }
+                }
                 FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/main-page.fxml"));
                 Parent parent = fxmlLoader.load();
                 MainPage mainPage = fxmlLoader.getController();
