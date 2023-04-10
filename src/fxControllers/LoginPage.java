@@ -35,9 +35,8 @@ public class LoginPage {
             Manager manager = managerHib.getManagerByLoginData(loginField.getText(), passwordField.getText());
             if (manager != null) {
                 long startTime = System.currentTimeMillis();
-                long endTime = startTime + 10000;
+                long endTime = startTime + 1;
                 while (System.currentTimeMillis() < endTime) {
-                    //funkcija
                     if (endTime<System.currentTimeMillis()) {
                         FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
                     }
@@ -58,9 +57,8 @@ public class LoginPage {
             Trucker trucker = truckerHib.getTruckerByLoginData(loginField.getText(), passwordField.getText());
             if (trucker != null) {
                 long startTime = System.currentTimeMillis();
-                long endTime = startTime + 10000;
+                long endTime = startTime + 1;
                 while (System.currentTimeMillis() < endTime) {
-                    //funkcija
                     if (endTime<System.currentTimeMillis()) {
 
                         FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
