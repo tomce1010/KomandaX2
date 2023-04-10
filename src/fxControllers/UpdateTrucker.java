@@ -27,6 +27,8 @@ public class UpdateTrucker {
     public CheckBox medicalField;
     public CheckBox driverField;
     public TextField distanceField;
+    public TextField MedicalCard;
+    public TextField DriversLicense;
     private TruckerHib truckerHib;
     private Trucker selectedTrucker;
     private EntityManagerFactory entityManagerFactory;
@@ -49,6 +51,9 @@ public class UpdateTrucker {
         medicalField.setSelected(trucker.isHasValidMedicalCard());
         driverField.setSelected(trucker.isHasValidDriversLicence());
         distanceField.setText(String.valueOf(trucker.getFullDrivenDistance()));
+        MedicalCard.setText(String.valueOf(trucker.getMedicalCard()));
+        DriversLicense.setText(String.valueOf(trucker.getDriversLicense()));
+
     }
 
     public void updateTrucker() throws IOException {
@@ -62,6 +67,9 @@ public class UpdateTrucker {
         trucker.setHasValidMedicalCard(medicalField.isSelected());
         trucker.setHasValidDriversLicence(driverField.isSelected());
         trucker.setFullDrivenDistance(Integer.parseInt(distanceField.getText()));
+        trucker.setDriversLicense(DriversLicense.getText());
+        trucker.setMedicalCard(MedicalCard.getText());
         truckerHib.updateTrucker(trucker);
     }
 }
+
