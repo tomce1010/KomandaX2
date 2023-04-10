@@ -49,6 +49,7 @@ public class MainPage implements Initializable {
     public AnchorPane truckerPane;
     public AnchorPane checkPointPane;
     public AnchorPane destinationPane;
+    public AnchorPane dataPane;
     public AnchorPane truckPane;
     public BarChart<String, Integer> barChart;
     public DatePicker departureFilter;
@@ -108,12 +109,12 @@ public class MainPage implements Initializable {
             allTabs.getTabs().remove(managerTab);
             allTabs.getTabs().remove(truckerTab);
             destinationPane.setDisable(true);
+            dataPane.setDisable(true);
             checkPointPane.setDisable(true);
             truckPane.setDisable(true);
         } else if (user.getClass() == Manager.class && manager.isAdmin() == false) {
             allTabs.getTabs().remove(destinationTab);
             managerPane.setDisable(true);
-            truckerPane.setDisable(true);
         }
     }
 
@@ -153,18 +154,18 @@ public class MainPage implements Initializable {
     }
     //HOME
     public void signOut() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("You're about to logout!");
-        alert.setContentText("Do you really want to logout?");
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) truckPane.getScene().getWindow();
-            stage.setTitle("Login");
-            stage.setScene(scene);
-            stage.show();
-        }
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+         alert.setTitle("Logout");
+         alert.setHeaderText("Check if you saved all the data!");
+         alert.setContentText("Do you really want to logout?");
+         if (alert.showAndWait().get() == ButtonType.OK) {
+             FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
+             Scene scene = new Scene(fxmlLoader.load());
+             Stage stage = (Stage) truckPane.getScene().getWindow();
+             stage.setTitle("Login");
+             stage.setScene(scene);
+             stage.show();
+         }
     }
 
     public void viewYourData() {
