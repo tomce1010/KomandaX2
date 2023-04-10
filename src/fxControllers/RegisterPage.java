@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.hibernate.query.criteria.internal.expression.function.UpperFunction;
 import utils.FxUtils;
 
 import javax.persistence.EntityManagerFactory;
@@ -76,6 +77,10 @@ public class RegisterPage implements Initializable {
         if(phoneField.getText().length() >= 15)
         {
             FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Phone number cannot exceed 15 digits", phoneField.getText());
+        }
+        if(passwordField.getText().length() <= 10)
+        {
+            FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Password must be longer than 10 characters", passwordField.getText());
         }
         else {
             if (!managerCheck.isSelected()) {
