@@ -27,6 +27,7 @@ public class UpdateDestination implements Initializable{
     public TextField distanceField;
     public DatePicker arrivalDate;
     public DatePicker departureDate;
+    public TextField truckdetails;
     private DestinationHib destinationHib;
     private Destination selectedDestination;
     public ChoiceBox statusField;
@@ -46,7 +47,7 @@ public class UpdateDestination implements Initializable{
         distanceField.setText(String.valueOf(destination.getDistance()));
         departureDate.setValue(destination.getDepartureDate());
         arrivalDate.setValue(destination.getArrivalDate());
-
+        truckdetails.setText(String.valueOf(destination.getTruckdetails()));
     }
 
     public void updateDestination() throws IOException {

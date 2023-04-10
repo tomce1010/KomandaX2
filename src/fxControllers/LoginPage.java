@@ -24,31 +24,48 @@ public class LoginPage {
     public TextField loginField;
     @FXML
     public PasswordField passwordField;
+    @FXML
     public CheckBox managerCheck;
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Kursinis");
     ManagerHib managerHib = new ManagerHib(entityManagerFactory);
     TruckerHib truckerHib = new TruckerHib(entityManagerFactory);
 
-    public void login() throws IOException {
+
+    public boolean login() throws IOException, InterruptedException {
         if (managerCheck.isSelected()) {
             Manager manager = managerHib.getManagerByLoginData(loginField.getText(), passwordField.getText());
             if (manager != null) {
+                long startTime = System.currentTimeMillis();
+                long endTime = startTime + 1;
+                while (System.currentTimeMillis() < endTime) {
+                    if (endTime<System.currentTimeMillis()) {
+                        FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
+                    }
+                }
                 FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/main-page.fxml"));
                 Parent parent = fxmlLoader.load();
                 MainPage mainPage = fxmlLoader.getController();
                 mainPage.setDataManager(entityManagerFactory, manager, manager);
-
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) passwordField.getScene().getWindow();
                 stage.setTitle("Main page");
                 stage.setScene(scene);
                 stage.show();
+                return true;
             } else {
                 FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "No such user or wrong credentials");
+                return false;
             }
         } else {
             Trucker trucker = truckerHib.getTruckerByLoginData(loginField.getText(), passwordField.getText());
             if (trucker != null) {
+                long startTime = System.currentTimeMillis();
+                long endTime = startTime + 1;
+                while (System.currentTimeMillis() < endTime) {
+                    if (endTime<System.currentTimeMillis()) {
+                        FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
+                    }
+                }
                 FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/main-page.fxml"));
                 Parent parent = fxmlLoader.load();
                 MainPage mainPage = fxmlLoader.getController();
@@ -59,20 +76,26 @@ public class LoginPage {
                 stage.setTitle("Main page");
                 stage.setScene(scene);
                 stage.show();
+                return true;
             } else {
                 FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "No such user or wrong credentials");
+                return false;
             }
         }
     }
 
-    public void Register() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/register-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) passwordField.getScene().getWindow();
-        stage.setTitle("Register");
-        stage.setScene(scene);
-        stage.show();
-        RegisterPage registerPage = fxmlLoader.getController();
-        registerPage.setData(entityManagerFactory);
+    public void Register() throws ExceptionInInitializerError {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/register-page.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) passwordField.getScene().getWindow();
+            stage.setTitle("Register");
+            stage.setScene(scene);
+            stage.show();
+            RegisterPage registerPage = fxmlLoader.getController();
+            registerPage.setData(entityManagerFactory);
+        } catch (IOException e) {
+            throw new ExceptionInInitializerError();
+        }
     }
 }
