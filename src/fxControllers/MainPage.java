@@ -40,6 +40,8 @@ public class MainPage implements Initializable {
     public ListView<Cargo> cargoList;
     public ListView<Truck> truckList;
     public ListView<Destination> destinationList;
+    public ListView<Destination> arrivalList;
+    public ListView<Destination> dateList;
     public User user;
     public Manager manager;
     public Trucker trucker;
@@ -514,6 +516,7 @@ public class MainPage implements Initializable {
         UpdateDestination updateDestination = fxmlLoader.getController();
         updateDestination.setData(entityManagerFactory, destinationList.getSelectionModel().getSelectedItem());
         destinationList.getItems().clear();
+        FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Update report", "The details were updated");
         fillList();
     }
 
@@ -532,13 +535,14 @@ public class MainPage implements Initializable {
     }
 
     public void filterData() {
-        LocalDate localDateDeparture = departureFilter.getValue();
-        LocalDate localDateArrival = arrivalFilter.getValue();
+        LocalDate Departure = departureFilter.getValue();
+        LocalDate Arrival = arrivalFilter.getValue();
         destinationList.getItems().clear();
-        destinationHib.getDataByFilter(Status.valueOf(statusFilter.getSelectionModel().getSelectedItem().toString()), localDateDeparture, localDateArrival).forEach(e -> {
+        arrivalList.getItems().clear();
+        dateList.getItems().clear();
+        destinationHib.getDataByFilter(Status.valueOf(statusFilter.getSelectionModel().getSelectedItem().toString()), Departure, Arrival).forEach(e -> {
             destinationList.getItems().add(e);
         });
-
     }
 
 

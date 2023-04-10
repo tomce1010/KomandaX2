@@ -24,6 +24,7 @@ public class Destination{
     private LocalDate departureDate;
     private LocalDate arrivalDate;
     private Status status;
+    private String truckdetails;
     @ManyToOne
     private Cargo cargo;
     @ManyToOne
@@ -32,7 +33,7 @@ public class Destination{
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     private List<CheckPoint> checkPoint;
 
-    public Destination(String start, String destination, int distance, LocalDate departureDate, LocalDate arrivalDate, Status status, Manager responsibleManager) {
+    public Destination(String start, String destination, int distance, LocalDate departureDate, LocalDate arrivalDate, Status status, Manager responsibleManager, String truckdetails) {
         this.start = start;
         this.destination = destination;
         this.distance = distance;
@@ -40,6 +41,7 @@ public class Destination{
         this.arrivalDate = arrivalDate;
         this.status = status;
         this.responsibleManager = responsibleManager;
+        this.truckdetails = truckdetails;
     }
 
     public Destination(String start, String destination, int distance, LocalDate departureDate, LocalDate arrivalDate, Status status, Cargo cargo, Manager responsibleManager, List<CheckPoint> checkPoint) {
@@ -61,6 +63,7 @@ public class Destination{
                 "\nDestination = '" + destination + '\'' +
                 "\nDeparture date = '" + departureDate + '\'' +
                 "\nArrival date = '" + arrivalDate + '\'' +
-                "\nStatus: " + status;
+                "\nStatus: " + status + '\'' +
+                "\nTruck Plates: " + truckdetails;
     }
 }
