@@ -4,14 +4,12 @@ import Personel.Manager;
 import Personel.Trucker;
 import hibernate.ManagerHib;
 import hibernate.TruckerHib;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javax.persistence.EntityManagerFactory;
@@ -94,5 +92,16 @@ public class RegisterPage implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         disableFields();
+    }
+
+    public void getBackToLogin(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) passwordField.getScene().getWindow();
+        stage.setTitle("Register");
+        stage.setScene(scene);
+        stage.show();
+        RegisterPage registerPage = fxmlLoader.getController();
+        registerPage.setData(entityManagerFactory);
     }
 }

@@ -30,7 +30,6 @@ public class LoginPage {
     TruckerHib truckerHib = new TruckerHib(entityManagerFactory);
 
 
-
     public void login() throws IOException, InterruptedException {
         if (managerCheck.isSelected()) {
             Manager manager = managerHib.getManagerByLoginData(loginField.getText(), passwordField.getText());
