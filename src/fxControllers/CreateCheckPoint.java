@@ -18,6 +18,7 @@ public class CreateCheckPoint {
     public Button createButton;
     public TextField countryField;
     public TextField addressField;
+    public TextField GPSField;
     private CheckPointHib checkPointHib;
     private EntityManagerFactory entityManagerFactory;
 
@@ -28,7 +29,7 @@ public class CreateCheckPoint {
 
     public void createCheckPoint() throws IOException {
         CheckPoint checkPoint = null;
-        checkPoint = new CheckPoint(countryField.getText(), addressField.getText());
+        checkPoint = new CheckPoint(countryField.getText(), addressField.getText(), GPSField.getText());
         checkPointHib.createCheckPoint(checkPoint);
     }
 }
