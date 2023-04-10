@@ -24,13 +24,14 @@ public class LoginPage {
     public TextField loginField;
     @FXML
     public PasswordField passwordField;
+    @FXML
     public CheckBox managerCheck;
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Kursinis");
     ManagerHib managerHib = new ManagerHib(entityManagerFactory);
     TruckerHib truckerHib = new TruckerHib(entityManagerFactory);
 
 
-    public void login() throws IOException, InterruptedException {
+    public boolean login() throws IOException, InterruptedException {
         if (managerCheck.isSelected()) {
             Manager manager = managerHib.getManagerByLoginData(loginField.getText(), passwordField.getText());
             if (manager != null) {
@@ -50,8 +51,10 @@ public class LoginPage {
                 stage.setTitle("Main page");
                 stage.setScene(scene);
                 stage.show();
+                return true;
             } else {
                 FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "No such user or wrong credentials");
+                return false;
             }
         } else {
             Trucker trucker = truckerHib.getTruckerByLoginData(loginField.getText(), passwordField.getText());
@@ -60,7 +63,6 @@ public class LoginPage {
                 long endTime = startTime + 1;
                 while (System.currentTimeMillis() < endTime) {
                     if (endTime<System.currentTimeMillis()) {
-
                         FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "Login Timeout");
                     }
                 }
@@ -74,8 +76,10 @@ public class LoginPage {
                 stage.setTitle("Main page");
                 stage.setScene(scene);
                 stage.show();
+                return true;
             } else {
                 FxUtils.generateAlert(Alert.AlertType.INFORMATION, "User login report", "No such user or wrong credentials");
+                return false;
             }
         }
     }
