@@ -3,18 +3,16 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/node:14.17.0-browsers
     steps:
-      - checkout
-      - run:
-          name: Install Gradle
-          command: |
-            wget https://services.gradle.org/distributions/gradle-7.6-bin.zip
-            sudo unzip -d /opt/gradle gradle-7.6-bin.zip
-            echo 'export PATH=$PATH:/opt/gradle/gradle-7.6/bin' >> $BASH_ENV
-            source $BASH_ENV
-      - run: gradle build
-      - run: gradle test
+      - checkout:
+          path: ~/my-repo
+          persist-credentials: true
+          branches:
+            only:
+              - feature-vartotojo-regsitracija #vsfvf
+      - run: npm install
+      - run: npm test
 
 workflows:
   version: 2.1
