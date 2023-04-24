@@ -21,5 +21,6 @@
     <orderEntry type="library" name="projectlombok.lombok" level="project" />
     <orderEntry type="library" name="hibernate.core" level="project" />
     <orderEntry type="library" name="hibernate.core" level="project" />
+    <orderEntry type="library" name="mockito.junit.jupiter" level="project" />
   </component>
 </module>

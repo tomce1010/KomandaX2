@@ -6,8 +6,9 @@
 
 <AnchorPane prefHeight="234.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControllers.CreateCheckPoint">
    <children>
-      <Button fx:id="createButton" layoutX="118.0" layoutY="157.0" mnemonicParsing="false" onAction="#createCheckPoint" text="Create" />
+      <Button fx:id="createButton" layoutX="120.0" layoutY="181.0" mnemonicParsing="false" onAction="#createCheckPoint" text="Create" />
       <TextField fx:id="countryField" layoutX="69.0" layoutY="50.0" promptText="Country" />
-      <TextField fx:id="addressField" layoutX="70.0" layoutY="99.0" promptText="Address" />
+      <TextField fx:id="addressField" layoutX="69.0" layoutY="92.0" promptText="Address" />
+      <TextField fx:id="GPSField" layoutX="69.0" layoutY="138.0" promptText="GPS coordinates" />
    </children>
 </AnchorPane>

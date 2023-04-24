@@ -49,6 +49,7 @@ public class MainPage implements Initializable {
     public AnchorPane truckerPane;
     public AnchorPane checkPointPane;
     public AnchorPane destinationPane;
+    public AnchorPane dataPane;
     public AnchorPane truckPane;
     public BarChart<String, Integer> barChart;
     public DatePicker departureFilter;
@@ -108,12 +109,12 @@ public class MainPage implements Initializable {
             allTabs.getTabs().remove(managerTab);
             allTabs.getTabs().remove(truckerTab);
             destinationPane.setDisable(true);
-            checkPointPane.setDisable(true);
+            dataPane.setDisable(true);
             truckPane.setDisable(true);
         } else if (user.getClass() == Manager.class && manager.isAdmin() == false) {
             allTabs.getTabs().remove(destinationTab);
+            allTabs.getTabs().remove(managerTab);
             managerPane.setDisable(true);
-            truckerPane.setDisable(true);
         }
     }
 
@@ -153,18 +154,18 @@ public class MainPage implements Initializable {
     }
     //HOME
     public void signOut() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("You're about to logout!");
-        alert.setContentText("Do you really want to logout?");
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) truckPane.getScene().getWindow();
-            stage.setTitle("Login");
-            stage.setScene(scene);
-            stage.show();
-        }
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+         alert.setTitle("Logout");
+         alert.setHeaderText("Check if you saved all the data!");
+         alert.setContentText("Do you really want to logout?");
+         if (alert.showAndWait().get() == ButtonType.OK) {
+             FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/login-page.fxml"));
+             Scene scene = new Scene(fxmlLoader.load());
+             Stage stage = (Stage) truckPane.getScene().getWindow();
+             stage.setTitle("Login");
+             stage.setScene(scene);
+             stage.show();
+         }
     }
 
     public void viewYourData() {
@@ -331,17 +332,22 @@ public class MainPage implements Initializable {
     }
 
     public void updateTrucker() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(UpdateTrucker.class.getResource("../fxml/update-trucker-page.fxml"));
-        Parent parent = fxmlLoader.load();
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.setTitle("Trucker Shop");
-        stage.setScene(scene);
-        stage.show();
-        UpdateTrucker updateTrucker = fxmlLoader.getController();
-        updateTrucker.setData(entityManagerFactory, truckerList.getSelectionModel().getSelectedItem());
-        truckerList.getItems().clear();
-        fillList();
+        if (truckerList.getSelectionModel().isEmpty()){
+            FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Please select an item", "!!!");
+        }
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(UpdateTrucker.class.getResource("../fxml/update-trucker-page.fxml"));
+            Parent parent = fxmlLoader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setTitle("Trucker Shop");
+            stage.setScene(scene);
+            stage.show();
+            UpdateTrucker updateTrucker = fxmlLoader.getController();
+            updateTrucker.setData(entityManagerFactory, truckerList.getSelectionModel().getSelectedItem());
+            truckerList.getItems().clear();
+            fillList();
+        }
     }
 
     public void createTrucker() throws IOException {

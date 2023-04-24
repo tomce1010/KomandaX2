@@ -66,4 +66,8 @@ public class Destination{
                 "\nStatus: " + status + '\'' +
                 "\nTruck Plates: " + truckdetails;
     }
+
+    public void setName(String paris) {
+
+    }
 }
