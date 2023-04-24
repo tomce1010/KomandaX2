@@ -9,11 +9,7 @@ jobs:
 
     steps:
       - checkout:
-          path: ~/my-repo
-          persist-credentials: true
-          branches:
-            only:
-              - feature-vartotojo-regsitracija #vsfvf
+          path: ~/KomandaX2
       - run: npm install
       - run: npm test
 
