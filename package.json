@@ -2,9 +2,9 @@
   "name": "KomandaX2",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "test": "java-props"
   },
   "dependencies": {
-    "jest": "^27.0.6"
+    "java-props": "^2.3.1"
   }
 }
