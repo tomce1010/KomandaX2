@@ -2,8 +2,8 @@
   "name": "KomandaX2",
   "version": "1.0.0",
   "scripts": {
-    "test": "run all tests",
-    "test-create-trucker": "npm test CreateTruckerTest"
+    "test": "jest",
+    "test-create-trucker": "npm test -- CreateTruckerTest"
   },
   "dependencies": {
   }
