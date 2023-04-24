@@ -4,26 +4,6 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
-    working_directory: ~/Kursinis
     steps:
       - checkout
-      - run:
-          name: Install Gradle
-          command: |
-            # Download and install Gradle
-            curl -s "https://get.sdkman.io" | bash
-            source "$HOME/.sdkman/bin/sdkman-init.sh"
-            sdk install gradle 2.1
-
-      - run:
-          name: Run tests with Gradle
-          command: |
-            # Build and run tests with Gradle
-            source "$HOME/.sdkman/bin/sdkman-init.sh"
-            gradle test --console=plain
-
-workflows:
-  version: 2.1
-  build-and-test:
-    jobs:
-      - build
+      - run: node --version
