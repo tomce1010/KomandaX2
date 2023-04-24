@@ -1,9 +1,14 @@
 version: 2.1
 
+workflows:
+    test-deploy:
+        jobs:
+          - test
+
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/node:14.17.0-browsers
     steps:
       - checkout
       - run: node --version
