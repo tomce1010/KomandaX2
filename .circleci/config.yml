@@ -7,15 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build
+          name: Install Gradle
           command: |
-            javac -d build/classes src/fxControllers/CreateCargo.java
-          working_directory: ~/KomandaX2
-      - run:
-          name: Test
-          command: |
-            java -cp build/classes com.example.MyClassTest
-          working_directory: ~/KomandaX2
+            wget https://services.gradle.org/distributions/gradle-6.9-bin.zip
+            sudo unzip -d /opt/gradle gradle-6.9-bin.zip
+            echo 'export PATH=$PATH:/opt/gradle/gradle-6.9/bin' >> $BASH_ENV
+            source $BASH_ENV
+      - run: gradle build
+      - run: gradle test
 
 workflows:
   version: 2.1
