@@ -5,7 +5,8 @@ jobs:
     docker:
       - image: circleci/node:14.17.0-browsers
 
-        working_directory: ~/KomandaX2
+    working_directory: ~/KomandaX2
+
     steps:
       - checkout:
           path: ~/my-repo
