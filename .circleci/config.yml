@@ -7,9 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install Node.js and npm
           command: |
-            npm install
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt-get install -y nodejs
       - run:
           name: Run tests
           command: |
