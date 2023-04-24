@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
-    "test-create-trucker": "npm test -- CreateTruckerTest"
+    "test-create-trucker": "jest CreateTruckerTest"
   },
-  "dependencies": {
+  "devDependencies": {
+    "jest": "^29.5.0"
   }
 }
