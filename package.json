@@ -2,7 +2,8 @@
   "name": "KomandaX2",
   "version": "1.0.0",
   "scripts": {
-    "test": "java-props"
+    "test": "run all tests",
+    "test-create-trucker": "npm test CreateTruckerTest"
   },
   "dependencies": {
     "java-props": "^2.3.1"
