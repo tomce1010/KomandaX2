@@ -6,6 +6,5 @@
     "test-create-trucker": "npm test CreateTruckerTest"
   },
   "dependencies": {
-    "java-props": "^2.3.1"
   }
 }
