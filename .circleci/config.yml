@@ -3,15 +3,22 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/maven:3.6.3-jdk-8
+      - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - run:
           name: Build
-          command: mvn clean install
+          command: |
+            javac -d build/classes src/main/java/com/example/MyClass.java
+          working_directory: ~/project
+      - run:
+          name: Test
+          command: |
+            java -cp build/classes com.example.MyClassTest
+          working_directory: ~/Kursinis
 
 workflows:
   version: 2.1
-  build:
+  build-and-test:
     jobs:
       - build
