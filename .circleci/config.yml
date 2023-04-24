@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:14.17.0-browsers
-    working_directory: /KomandaX2/.circleci
+    working_directory: /home/circleci/project
     steps:
       - checkout
       - run: npm install
