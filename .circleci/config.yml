@@ -11,7 +11,7 @@ jobs:
       - checkout:
           path: ~/KomandaX2
       - run: npm install
-      - run: npm run test-create-trucker
+      - run: npm test CreateTruckerTest
 
 
 workflows:
