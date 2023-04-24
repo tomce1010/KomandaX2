@@ -27,6 +27,7 @@ public class CreateDestination implements Initializable {
     public DatePicker arrivalDate;
     public DatePicker departureDate;
     public ChoiceBox statusField;
+    public TextField truckdetails;
     private DestinationHib destinationHib;
     private EntityManagerFactory entityManagerFactory;
     public User user;
@@ -35,14 +36,14 @@ public class CreateDestination implements Initializable {
         this.entityManagerFactory = entityManagerFactory;
         this.destinationHib = new DestinationHib(entityManagerFactory);
         this.user = user;
+
     }
 
     public void createDestination() throws IOException {
         Destination destination = null;
-        destination = new Destination(startField.getText(), destinationField.getText(), Integer.parseInt(distanceField.getText()), departureDate.getValue(), arrivalDate.getValue(), Status.valueOf(statusField.getSelectionModel().getSelectedItem().toString()), (Manager) user);
+        destination = new Destination(startField.getText(), destinationField.getText(), Integer.parseInt(distanceField.getText()), departureDate.getValue(), arrivalDate.getValue(), Status.valueOf(statusField.getSelectionModel().getSelectedItem().toString()), (Manager) user, truckdetails.getText());
         destinationHib.createDestination(destination);
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

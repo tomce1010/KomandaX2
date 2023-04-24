@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="524.0" prefWidth="489.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControllers.RegisterPage">
+<AnchorPane prefHeight="524.0" prefWidth="489.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxControllers.RegisterPage">
    <children>
       <Button fx:id="registerButton" layoutX="111.0" layoutY="437.0" mnemonicParsing="false" onAction="#Register" text="Register" />
       <TextField fx:id="passwordField" layoutX="71.0" layoutY="140.0" promptText="Password" />
@@ -20,6 +20,7 @@
       <CheckBox fx:id="managerCheck" layoutX="72.0" layoutY="382.0" mnemonicParsing="false" onAction="#disableFieldsForUser" text="Manager" />
       <TextField fx:id="distanceField" layoutX="275.0" layoutY="165.0" promptText="Full driven distance" />
       <CheckBox fx:id="licenceCheck" layoutX="274.0" layoutY="132.0" mnemonicParsing="false" text="Have valid driver licence" />
+      <Button layoutX="295.0" layoutY="437.0" mnemonicParsing="false" onAction="#getBackToLogin" text="Get back to login" />
       <TextField fx:id="DriversLicense" layoutX="275.0" layoutY="202.0" promptText="Drivers license number" />
       <TextField fx:id="MedicalCard" layoutX="274.0" layoutY="237.0" promptText="Medical card number" />
    </children>
