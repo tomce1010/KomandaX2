@@ -10,7 +10,7 @@ jobs:
           persist-credentials: true
           branches:
             only:
-              - uzsakymu_perziura
+              - uzsakymu_perziura #vsfvf
       - run: npm install
       - run: npm test
 
