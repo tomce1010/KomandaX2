@@ -10,12 +10,12 @@ jobs:
           name: Build
           command: |
             javac -d build/classes src/fxControllers/CreateCargo.java
-          working_directory: ~/Kursinis
+          working_directory: ~/KomandaX2
       - run:
           name: Test
           command: |
             java -cp build/classes com.example.MyClassTest
-          working_directory: ~/Kursinis
+          working_directory: ~/KomandaX2
 
 workflows:
   version: 2.1
