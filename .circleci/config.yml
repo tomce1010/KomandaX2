@@ -9,8 +9,8 @@ jobs:
       - run:
           name: Build
           command: |
-            javac -d build/classes src/main/java/com/example/MyClass.java
-          working_directory: ~/project
+            javac -d build/classes src/fxControllers/CreateCargo.java
+          working_directory: ~/Kursinis
       - run:
           name: Test
           command: |
