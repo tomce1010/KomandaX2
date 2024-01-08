@@ -23,7 +23,7 @@ public class CreateTruck {
     public TextField yearField;
     public TextField locationField;
     public CheckBox transitField;
-    private TruckHib truckHib;
+    public TruckHib truckHib;
     private EntityManagerFactory entityManagerFactory;
 
     public void setData(EntityManagerFactory entityManagerFactory) {

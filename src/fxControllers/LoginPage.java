@@ -84,8 +84,7 @@ public class LoginPage {
         }
     }
 
-    public void Register() throws ExceptionInInitializerError {
-        try {
+    public void Register() throws IOException {
             FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("../fxml/register-page.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) passwordField.getScene().getWindow();
@@ -94,8 +93,5 @@ public class LoginPage {
             stage.show();
             RegisterPage registerPage = fxmlLoader.getController();
             registerPage.setData(entityManagerFactory);
-        } catch (IOException e) {
-            throw new ExceptionInInitializerError();
-        }
     }
 }

@@ -56,7 +56,7 @@ public class RegisterPage implements Initializable {
         this.managerHib = new ManagerHib(entityManagerFactory);
         this.truckerHib = new TruckerHib(entityManagerFactory);
     }
-    public static void disableFieldsForUser(CheckBox managerCheck, CheckBox medicalCheck, CheckBox licenceCheck, TextField distanceField, TextField DriversLicense, TextField MedicalCard, CheckBox adminField) {
+    public void disableFieldsForUser(CheckBox managerCheck, CheckBox medicalCheck, CheckBox licenceCheck, TextField distanceField, TextField DriversLicense, TextField MedicalCard, CheckBox adminField) {
         if(managerCheck.isSelected() == false){
             medicalCheck.setDisable(false);
             licenceCheck.setDisable(false);
@@ -121,4 +121,5 @@ public class RegisterPage implements Initializable {
         RegisterPage registerPage = fxmlLoader.getController();
         registerPage.setData(entityManagerFactory);
     }
+
 }
