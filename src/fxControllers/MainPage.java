@@ -153,6 +153,7 @@ public class MainPage implements Initializable {
         fillList();
     }
     //HOME
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public void signOut() throws IOException {
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
          alert.setTitle("Logout");
@@ -281,7 +282,7 @@ public class MainPage implements Initializable {
         comment.getReplies().forEach(r -> addTreeItem(r, treeItem));
     }
     //MANAGER
-    public void viewManager() throws SQLException {
+    public void viewManager() {
         ManagerHib managerHib = new ManagerHib(entityManagerFactory);
         Manager managerDb = managerHib.getManagerById(managerList.getSelectionModel().getSelectedItem().getId());
         FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Manager data", managerDb.toString());
@@ -545,9 +546,7 @@ public class MainPage implements Initializable {
         destinationList.getItems().clear();
         arrivalList.getItems().clear();
         dateList.getItems().clear();
-        destinationHib.getDataByFilter(Status.valueOf(statusFilter.getSelectionModel().getSelectedItem().toString()), Departure, Arrival).forEach(e -> {
-            destinationList.getItems().add(e);
-        });
+        destinationHib.getDataByFilter(Status.valueOf(statusFilter.getSelectionModel().getSelectedItem().toString()), Departure, Arrival).forEach(e -> destinationList.getItems().add(e));
     }
 
 
